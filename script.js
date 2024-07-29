@@ -1,24 +1,24 @@
-let game_board = [["x", "x", "o"],
-                  ["o", "x", "x"],
-                  ["x", "x", "x"]];
+let game_board = [["o", "x", "o"],
+                  ["o", "x", "o"],
+                  ["x", "o", "x"]];
 
                 
 
 
 const checkWin = (game_board) => {
     
+    
+    let isWin = false;
 
     //check rows
     for(let i = 0; i < 3; i++){
         const firstCell = game_board[i][0];
         const secondCell = game_board[i][1];
         const thirdCell = game_board[i][2];
-        if(firstCell === secondCell && secondCell === thirdCell){
-            console.log("win")
+        if(firstCell == secondCell && secondCell == thirdCell){
+            isWin = true;
         }
-        else {
-           // console.log("draw")
-        }
+    
     }
 
     //check columns
@@ -28,19 +28,35 @@ const checkWin = (game_board) => {
 
 
     if(game_board[0][0] == game_board[1][0] &&  game_board[1][0] === game_board[2][0]){
-        console.log("winnn col 1!!")
+        isWin = true;
     }
     else if(game_board[0][1] == game_board[1][1] &&  game_board[1][1] === game_board[2][1]){
-        console.log("winnn col 2!!")
+        isWin = true;
     }
     else if(game_board[0][2] == game_board[1][2] &&  game_board[1][2] === game_board[2][2]){
-        console.log("winnn col 3!!")
+        isWin = true;
     }
 
 
-    //diagonal 
+    //diagonal from left to right
 
-    
+    if(game_board[0][0] == game_board[1][1] && game_board[1][1] == game_board[2][2]){
+        isWin = true;
+    }
+
+    //diagonal from right to left
+    else if (game_board[0][2] == game_board[1][1] && game_board[1][1] == game_board[2][0]){
+        isWin = true;
+    }
+
+    if(isWin == true){
+        console.log("There is a winner")
+    }
+    else {
+        console.log("Draw!!")
+    }
+
+
 }
 
 
