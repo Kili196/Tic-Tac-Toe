@@ -30,7 +30,8 @@ const addCellEventListener = () => {
                     element.innerHTML = domElements.currPlayer.type;
                     game_board[element.parentElement.id][element.id] = domElements.currPlayer.type;
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
-                    
+                    console.log(element.parentElement.id)
+                    console.log(element.id)
                     console.log(game_board)
                 }
             })
