@@ -7,6 +7,8 @@
   --hover-color: #666d74;
   --settings-button: #60d394;
   --clear-button: #ee6055;
+  --settings-button-hover: #20c56a;
+  --clear-button-hover: #d84d43;
 }
 
 * {
@@ -98,8 +100,16 @@ body h1 {
   border: none;
 }
 
+#settings:hover {
+  background-color: var(--settings-button-hover);
+}
+
 #clear {
   background-color: var(--clear-button);
   outline: none;
   border: none;
+}
+
+#clear:hover {
+  background-color: var(--clear-button-hover);
 }
