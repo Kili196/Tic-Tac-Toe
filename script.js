@@ -27,8 +27,6 @@ const addCellEventListener = () => {
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
                 }
             })
-     
-     
     })
 }
 
