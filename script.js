@@ -21,7 +21,7 @@ const getDomElementsAndVariables = () => {
     const player_2 = newPlayer("Ai", "O");
     const currPlayer = player_1;
     const win_screen = document.getElementsByClassName("win-screen")
-    return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns})
+    return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns, win_screen: win_screen})
 }
 
 const addCellEventListener = () => {
@@ -34,9 +34,13 @@ const addCellEventListener = () => {
                     game_board[gameboard_position[0]][gameboard_position[1]] = domElements.currPlayer.type;
                     const res = checkWin(game_board, domElements.currPlayer);
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
-
-                    console.log(res)
                     checkDraw++;
+
+                    if(res != null){
+                        console.log(domElements.win_screen)
+                        setWinScreen(domElements.win_screen[0], domElements.currPlayer)
+                        console.log("hiiii")
+                    }
                 }
             })
     }) 
@@ -46,6 +50,10 @@ const addCellEventListener = () => {
 
 const init_game = () => {
     addCellEventListener();
+}
+
+const setWinScreen = (win_screen, player) => {
+    win_screen.innerHTML = player.name;
 }
 
 
