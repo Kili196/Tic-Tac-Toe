@@ -33,7 +33,8 @@ const addCellEventListener = () => {
                     const gameboard_position = element.id.split("/");
                     game_board[gameboard_position[0]][gameboard_position[1]] = domElements.currPlayer.type;
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
-                    checkWin(game_board)
+                    const res = checkWin(game_board, domElements.currPlayer);
+                    console.log(res)
                     checkDraw++;
                 }
             })
@@ -48,7 +49,7 @@ const init_game = () => {
 
 
 
-const checkWin = (game_board) => {
+const checkWin = (game_board, currPlayer) => {
     let isWin = false;
 
     //check rows
@@ -94,7 +95,7 @@ const checkWin = (game_board) => {
  
 
     if(isWin == true){
-        return ({winPlayer: currPlayer.player_1, draw: false})
+        return ({winPlayer: currPlayer.name, draw: false})
     }
     else if(checkDraw == 9){
         return ({winPlayer: "", draw: true})
