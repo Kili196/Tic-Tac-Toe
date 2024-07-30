@@ -32,8 +32,9 @@ const addCellEventListener = () => {
                     element.innerHTML = domElements.currPlayer.type;
                     const gameboard_position = element.id.split("/");
                     game_board[gameboard_position[0]][gameboard_position[1]] = domElements.currPlayer.type;
-                    domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
                     const res = checkWin(game_board, domElements.currPlayer);
+                    domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
+
                     console.log(res)
                     checkDraw++;
                 }
