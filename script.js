@@ -39,7 +39,7 @@ const addCellEventListener = () => {
                     if(res != null){
                         console.log(domElements.win_screen)
                         setWinScreen(domElements.win_screen[0], domElements.currPlayer)
-                        console.log("hiiii")
+                       
                     }
                 }
             })
@@ -53,7 +53,7 @@ const init_game = () => {
 }
 
 const setWinScreen = (win_screen, player) => {
-    win_screen.innerHTML = player.name;
+    win_screen.innerHTML = `${player.name} won!`;
 }
 
 
