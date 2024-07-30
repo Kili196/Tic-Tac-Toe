@@ -5,6 +5,8 @@
   --secondary-background-color: #495057;
   --secondary-gameboard-color: #7a7d80;
   --hover-color: #666d74;
+  --settings-button: #60d394;
+  --clear-button: #ee6055;
 }
 
 * {
@@ -86,11 +88,18 @@ body h1 {
   color: black;
   font-weight: 600;
   font-size: 1.5rem;
+  border-radius: 5px;
+  color: black;
 }
 
 #settings {
-  background-color: rgb(7, 190, 7);
+  background-color: var(--settings-button);
+  outline: none;
+  border: none;
 }
 
 #clear {
+  background-color: var(--clear-button);
+  outline: none;
+  border: none;
 }
