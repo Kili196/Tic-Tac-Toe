@@ -55,3 +55,9 @@ body h1 {
   display: flex;
   gap: 3px;
 }
+
+.win-screen {
+  font-size: 1.9rem;
+  color: white;
+  font-weight: 600;
+}

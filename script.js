@@ -20,6 +20,7 @@ const getDomElementsAndVariables = () => {
     const player_1 = newPlayer("Kili", "X");
     const player_2 = newPlayer("Ai", "O");
     const currPlayer = player_1;
+    const win_screen = document.getElementsByClassName("win-screen")
     return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns})
 }
 
@@ -58,33 +59,25 @@ const checkWin = (game_board) => {
         console.log(firstCell)
         console.log(secondCell)
         if(firstCell == secondCell && secondCell == thirdCell){
-            console.log("hii")
+            isWin = true;
         }
         else {
             isWin = false;
         }   
-        
-        
     
     }
 
     //check columns       
         if(game_board[0][0] === game_board[1][0] &&  game_board[1][0] === game_board[2][0] ){
-            
             isWin = true;
     }
         else if(game_board[0][1] == game_board[1][1] &&  game_board[1][1] === game_board[2][1]){
-            
             isWin = true;
         }
         else if(game_board[0][2] == game_board[1][2] &&  game_board[1][2] === game_board[2][2]){
-            
             isWin = true;
         }
     
-   
-
-
     //diagonal from left to right
     
       
@@ -101,10 +94,10 @@ const checkWin = (game_board) => {
  
 
     if(isWin == true){
-        console.log("There is a winner")
+        return ({winPlayer: currPlayer.player_1, draw: false})
     }
     else if(checkDraw == 9){
-        console.log("Draw")
+        return ({winPlayer: "", draw: true})
     }
 
 
