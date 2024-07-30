@@ -3,10 +3,13 @@ let game_board = [["o", "x", "o"],
                   ["x", "o", "x"]];
 
                 
-
+const getDomElements = () => {
+    const cells = document.getElementsByClassName("cell");
+    return ({cells: cells})
+}
 
 const checkWin = (game_board) => {
-    
+    getDomElements();
     
     let isWin = false;
 

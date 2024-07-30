@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Love+Light&family=Love+Ya+Like+A+Sister&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 :root {
   --main-background-color: #495057;
   --secondary-background-color: #6c757d;
@@ -8,6 +10,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
 }
 
 body {
@@ -16,6 +19,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: column;
+  gap: 20px;
+}
+
+body h1 {
+  color: white;
+  font-size: 3rem;
 }
 
 .cell {
@@ -23,6 +33,12 @@ body {
   height: 100px;
   background-color: var(--secondary-background-color);
   gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: white;
 }
 
 .cell:hover {
