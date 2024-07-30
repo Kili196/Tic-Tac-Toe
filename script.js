@@ -37,7 +37,7 @@ const addCellEventListener = () => {
                     checkDraw++;
 
                     if(res != null){
-                        console.log(domElements.win_screen)
+                    
                         setWinScreen(domElements.win_screen[0], domElements.currPlayer)
                        
                     }
@@ -66,8 +66,7 @@ const checkWin = (game_board, currPlayer) => {
         const firstCell = game_board[i][0];
         const secondCell = game_board[i][1];
         const thirdCell = game_board[i][2];
-        console.log(firstCell)
-        console.log(secondCell)
+       
         if(firstCell == secondCell && secondCell == thirdCell){
             isWin = true;
         }
