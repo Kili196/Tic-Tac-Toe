@@ -2,8 +2,9 @@
 
 :root {
   --main-background-color: #495057;
-  --secondary-background-color: #6c757d;
-  --hover-color: #767f88;
+  --secondary-background-color: #495057;
+  --secondary-gameboard-color: #7a7d80;
+  --hover-color: #666d74;
 }
 
 * {
@@ -60,4 +61,14 @@ body h1 {
   font-size: 1.9rem;
   color: white;
   font-weight: 600;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 30px 80px;
+  border-radius: 10px;
+  background-color: var(--secondary-gameboard-color);
 }
