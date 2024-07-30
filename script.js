@@ -1,16 +1,45 @@
-let game_board = [["o", "x", "o"],
-                  ["o", "x", "o"],
-                  ["x", "o", "x"]];
+let game_board = [["", "", ""],
+                  ["", "", ""],
+                  ["", "", ""]];
 
-                
-const getDomElements = () => {
-    const cells = document.getElementsByClassName("cell");
-    return ({cells: cells})
+
+
+
+const newPlayer = function(name, type){
+    return ({name: name, type: type});
 }
 
+                
+const getDomElementsAndVariables = () => {
+    const cells = document.getElementsByClassName("cell");
+    const player_1 = newPlayer("Kili", "X");
+    const player_2 = newPlayer("Ai", "O");
+    const currPlayer = player_1;
+    return ({cells: cells, currPlayer: currPlayer, player_1, player_2})
+}
+
+const addCellEventListener = () => {
+    const domElements = getDomElementsAndVariables();
+    Array.from(domElements.cells).forEach((element) => {
+            element.addEventListener("click", () => {
+                if(element.innerHTML == ""){
+                    element.innerHTML = domElements.currPlayer.type;
+                    domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
+                }
+            })
+     
+     
+    })
+}
+
+
+const init_game = () => {
+    addCellEventListener();
+}
+
+
+
 const checkWin = (game_board) => {
-    getDomElements();
-    
     let isWin = false;
 
     //check rows
@@ -63,5 +92,4 @@ const checkWin = (game_board) => {
 }
 
 
-checkWin(game_board)
-
+init_game();
