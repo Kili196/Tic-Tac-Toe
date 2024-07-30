@@ -12,22 +12,30 @@ const newPlayer = function(name, type){
                 
 const getDomElementsAndVariables = () => {
     const cells = document.getElementsByClassName("cell");
+    const columns = document.getElementsByClassName("column")
     const player_1 = newPlayer("Kili", "X");
     const player_2 = newPlayer("Ai", "O");
     const currPlayer = player_1;
-    return ({cells: cells, currPlayer: currPlayer, player_1, player_2})
+    return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns})
 }
 
 const addCellEventListener = () => {
     const domElements = getDomElementsAndVariables();
+
+
+
     Array.from(domElements.cells).forEach((element) => {
             element.addEventListener("click", () => {
                 if(element.innerHTML == ""){
                     element.innerHTML = domElements.currPlayer.type;
+                    game_board[element.parentElement.id][element.id] = domElements.currPlayer.type;
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
+                    
+                    console.log(game_board)
                 }
             })
-    })
+    }) 
+ 
 }
 
 
