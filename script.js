@@ -3,6 +3,10 @@ let game_board = [["1", "2", "3"],
                   ["7", "8", "9"]];
 
 
+//check if all cells are full
+let checkDraw = 1;
+
+
 
 
 const newPlayer = function(name, type){
@@ -21,9 +25,6 @@ const getDomElementsAndVariables = () => {
 
 const addCellEventListener = () => {
     const domElements = getDomElementsAndVariables();
-
-
-
     Array.from(domElements.cells).forEach((element) => {
             element.addEventListener("click", () => {
                 if(element.innerHTML == ""){
@@ -32,6 +33,7 @@ const addCellEventListener = () => {
                     game_board[gameboard_position[0]][gameboard_position[1]] = domElements.currPlayer.type;
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
                     checkWin(game_board)
+                    checkDraw++;
                 }
             })
     }) 
@@ -98,12 +100,11 @@ const checkWin = (game_board) => {
         }
  
 
-
     if(isWin == true){
         console.log("There is a winner")
     }
-    else {
-        console.log("Draw!!")
+    else if(checkDraw == 9){
+        console.log("Draw")
     }
 
 
