@@ -1,6 +1,6 @@
-let game_board = [["", "", ""],
-                  ["", "", ""],
-                  ["", "", ""]];
+let game_board = [["1", "2", "3"],
+                  ["6", "5", "4"],
+                  ["7", "8", "9"]];
 
 
 
@@ -53,29 +53,30 @@ const checkWin = (game_board) => {
         const firstCell = game_board[i][0];
         const secondCell = game_board[i][1];
         const thirdCell = game_board[i][2];
-    
-            if(firstCell == secondCell && secondCell == thirdCell && (firstCell != " " && secondCell != " " && thirdCell != " ")){
-            isWin = true;
-            }   
+        console.log(firstCell)
+        console.log(secondCell)
+        if(firstCell == secondCell && secondCell == thirdCell){
+            console.log("hii")
+        }
+        else {
+            isWin = false;
+        }   
         
         
     
     }
 
-    //check columns
-    console.log(game_board[0][0] == "");
-    console.log(game_board[1][0]);
-    console.log(game_board[2][0]);
-
-
-       
-        if(game_board[0][0] == game_board[1][0] &&  game_board[1][0] === game_board[2][0] ){
+    //check columns       
+        if(game_board[0][0] === game_board[1][0] &&  game_board[1][0] === game_board[2][0] ){
+            
             isWin = true;
     }
         else if(game_board[0][1] == game_board[1][1] &&  game_board[1][1] === game_board[2][1]){
+            
             isWin = true;
         }
         else if(game_board[0][2] == game_board[1][2] &&  game_board[1][2] === game_board[2][2]){
+            
             isWin = true;
         }
     
@@ -84,13 +85,15 @@ const checkWin = (game_board) => {
 
     //diagonal from left to right
     
-        console.log("hii")
+      
         if(game_board[0][0] == game_board[1][1] && game_board[1][1] == game_board[2][2]){
+         
             isWin = true;
         }
 
     //diagonal from right to left
         else if (game_board[0][2] == game_board[1][1] && game_board[1][1] == game_board[2][0]){
+          
             isWin = true;
         }
  
