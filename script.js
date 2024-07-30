@@ -28,11 +28,10 @@ const addCellEventListener = () => {
             element.addEventListener("click", () => {
                 if(element.innerHTML == ""){
                     element.innerHTML = domElements.currPlayer.type;
-                    game_board[element.parentElement.id][element.id] = domElements.currPlayer.type;
+                    const gameboard_position = element.id.split("/");
+                    game_board[gameboard_position[0]][gameboard_position[1]] = domElements.currPlayer.type;
                     domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
-                    console.log(element.parentElement.id)
-                    console.log(element.id)
-                    console.log(game_board)
+                    checkWin(game_board)
                 }
             })
     }) 
