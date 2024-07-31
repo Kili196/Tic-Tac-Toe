@@ -113,3 +113,13 @@ body h1 {
 #clear:hover {
   background-color: var(--clear-button-hover);
 }
+
+.settings_dialog {
+  width: 400px;
+  height: 100px;
+  margin: auto;
+}
+
+.settings_dialog::backdrop {
+  backdrop-filter: blur(3px);
+}
