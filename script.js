@@ -21,7 +21,9 @@ const getDomElementsAndVariables = () => {
     const player_2 = newPlayer("Ai", "O");
     const currPlayer = player_1;
     const win_screen = document.getElementsByClassName("win-screen")
-    return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns, win_screen: win_screen})
+    const settings_button = document.getElementById("settings");
+    const dialog = document.getElementsByClassName("settings_dialog");
+    return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns, win_screen: win_screen, settings_button: settings_button, dialog: dialog_button})
 }
 
 const addCellEventListener = () => {
@@ -47,8 +49,14 @@ const addCellEventListener = () => {
  
 }
 
+const settingsDialog = () => {
+    const domElements = getDomElementsAndVariables();
+    console.log(domElements.dialog_button);
+}
+
 
 const init_game = () => {
+    settingsDialog();
     addCellEventListener();
 }
 
