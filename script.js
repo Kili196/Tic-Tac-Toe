@@ -9,18 +9,20 @@ let checkDraw = 1;
 
 
 
+
+
 const newPlayer = function(name, type){
     return ({name: name, type: type});
 }
 
+
+let player_1 = newPlayer("Kili", "X");
+let player_2 = newPlayer("Ai", "O");
                 
 const getDomElementsAndVariables = () => {
     const cells = document.getElementsByClassName("cell");
     const columns = document.getElementsByClassName("column")
-    const player_names = getPlayerNames();
-    const player_1 = newPlayer("Kili", "X");
-    const player_2 = newPlayer("Ai", "O");
-  
+ 
     const currPlayer = player_1;
     const win_screen = document.getElementsByClassName("win-screen")
     const settings_button = document.getElementById("settings");
@@ -33,14 +35,10 @@ const getPlayerNames = () => {
     const player_2_input = document.getElementsByClassName("player-2-class")[0];
     const accept_button = document.getElementsByClassName("save-form")[0];
     const dialog = document.getElementsByClassName("settings_dialog")[0];
-    let player_1;
-    let player_2;
 
     accept_button.addEventListener("click", (e) => {
          player_1 = newPlayer(player_1_input.value, "X");
          player_2 = newPlayer(player_2_input.value, "O");
-         
-     
     })
     return({player_1: player_1, player_2: player_2} )
 }
@@ -82,6 +80,8 @@ const settingsDialog = () => {
 const init_game = () => {
     settingsDialog();
     addCellEventListener();
+    getPlayerNames();
+    
 }
 
 const setWinScreen = (win_screen, player) => {
