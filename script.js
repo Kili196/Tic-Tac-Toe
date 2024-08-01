@@ -17,9 +17,10 @@ const newPlayer = function(name, type){
 const getDomElementsAndVariables = () => {
     const cells = document.getElementsByClassName("cell");
     const columns = document.getElementsByClassName("column")
+    const player_names = getPlayerNames();
     const player_1 = newPlayer("Kili", "X");
     const player_2 = newPlayer("Ai", "O");
-
+  
     const currPlayer = player_1;
     const win_screen = document.getElementsByClassName("win-screen")
     const settings_button = document.getElementById("settings");
@@ -31,14 +32,17 @@ const getPlayerNames = () => {
     const player_1_input = document.getElementsByClassName("player-1-class")[0];
     const player_2_input = document.getElementsByClassName("player-2-class")[0];
     const accept_button = document.getElementsByClassName("save-form")[0];
-    
+    const dialog = document.getElementsByClassName("settings_dialog")[0];
+    let player_1;
+    let player_2;
 
     accept_button.addEventListener("click", (e) => {
-        e.preventDefault(); 
-        const player_1 = newPlayer(player_1_input.value, "X");
-        const player_2 = newPlayer(player_2_input.value, "O");
-        return({player_1: player_1, player_2: player_2} )
+         player_1 = newPlayer(player_1_input.value, "X");
+         player_2 = newPlayer(player_2_input.value, "O");
+         
+     
     })
+    return({player_1: player_1, player_2: player_2} )
 }
 
 const addCellEventListener = () => {
@@ -49,8 +53,9 @@ const addCellEventListener = () => {
                     element.innerHTML = domElements.currPlayer.type;
                     const gameboard_position = element.id.split("/");
                     game_board[gameboard_position[0]][gameboard_position[1]] = domElements.currPlayer.type;
+                    console.log(domElements.currPlayer)
                     const res = checkWin(game_board, domElements.currPlayer);
-                    domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
+
                     checkDraw++;
 
                     if(res != null){
@@ -58,6 +63,8 @@ const addCellEventListener = () => {
                         setWinScreen(domElements.win_screen[0], domElements.currPlayer)
                        
                     }
+                    domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
+
                 }
             })
     }) 
