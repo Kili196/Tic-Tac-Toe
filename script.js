@@ -19,11 +19,26 @@ const getDomElementsAndVariables = () => {
     const columns = document.getElementsByClassName("column")
     const player_1 = newPlayer("Kili", "X");
     const player_2 = newPlayer("Ai", "O");
+
     const currPlayer = player_1;
     const win_screen = document.getElementsByClassName("win-screen")
     const settings_button = document.getElementById("settings");
     const dialog = document.getElementsByClassName("settings_dialog");
     return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns, win_screen: win_screen, settings_button: settings_button, dialog: dialog})
+}
+
+const getPlayerNames = () => {
+    const player_1_input = document.getElementsByClassName("player-1-class")[0];
+    const player_2_input = document.getElementsByClassName("player-2-class")[0];
+    const accept_button = document.getElementsByClassName("save-form")[0];
+    
+
+    accept_button.addEventListener("click", (e) => {
+        e.preventDefault(); 
+        const player_1 = newPlayer(player_1_input.value, "X");
+        const player_2 = newPlayer(player_2_input.value, "O");
+        return({player_1: player_1, player_2: player_2} )
+    })
 }
 
 const addCellEventListener = () => {
