@@ -28,7 +28,8 @@ const getDomElementsAndVariables = () => {
     const win_screen = document.getElementsByClassName("win-screen")
     const settings_button = document.getElementById("settings");
     const dialog = document.getElementsByClassName("settings_dialog");
-    return ({cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns, win_screen: win_screen, settings_button: settings_button, dialog: dialog})
+    const clear = document.getElementById("clear");
+    return ({clear: clear, cells: cells, currPlayer: currPlayer, player_1, player_2, columns: columns, win_screen: win_screen, settings_button: settings_button, dialog: dialog})
 }
 
 const getPlayerNames = () => {
@@ -41,6 +42,7 @@ const getPlayerNames = () => {
          player_1 = newPlayer(player_1_input.value, "X");
          player_2 = newPlayer(player_2_input.value, "O");
          clearGame();
+         getDomElementsAndVariables().win_screen.innerHTML = "";
     })
     
     
@@ -84,6 +86,10 @@ const settingsDialog = () => {
 const init_game = () => {
     settingsDialog();
     addCellEventListener();
+    getDomElementsAndVariables().clear.addEventListener("click", () => {
+        clearGame();
+    })
+    getDomElementsAndVariables().win_screen.innerHTML = ""
   
     
 }
@@ -156,7 +162,10 @@ const clearGame = () => {
     Array.from(dom_elements.cells).forEach((cell) => {
         cell.innerHTML = "";
     })
+    getDomElementsAndVariables().win_screen.innerHTML = ""
 }
+
+
 
 
 init_game();
