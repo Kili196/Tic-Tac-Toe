@@ -24,7 +24,6 @@ let player_2 = newPlayer("Ai", "O");
 const getDomElementsAndVariables = () => {
     const cells = document.getElementsByClassName("cell");
     const columns = document.getElementsByClassName("column")
- 
     const currPlayer = player_1;
     const win_screen = document.getElementsByClassName("win-screen")
     const settings_button = document.getElementById("settings");
@@ -41,10 +40,10 @@ const getPlayerNames = () => {
     accept_button.addEventListener("click", (e) => {
          player_1 = newPlayer(player_1_input.value, "X");
          player_2 = newPlayer(player_2_input.value, "O");
-         console.log(player_1)
+         clearGame();
     })
     
-    return({player_1: player_1, player_2: player_2} )
+    
 }
 
 const addCellEventListener = () => {
@@ -147,6 +146,16 @@ const checkWin = (game_board, currPlayer) => {
     }
 
 
+}
+
+const clearGame = () => {
+    game_board = [["1", "2", "3"],
+                  ["6", "5", "4"],
+                  ["7", "8", "9"]];
+    const dom_elements = getDomElementsAndVariables();
+    Array.from(dom_elements.cells).forEach((cell) => {
+        cell.innerHTML = "";
+    })
 }
 
 
