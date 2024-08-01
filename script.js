@@ -18,6 +18,8 @@ const newPlayer = function(name, type){
 
 let player_1 = newPlayer("Kili", "X");
 let player_2 = newPlayer("Ai", "O");
+
+
                 
 const getDomElementsAndVariables = () => {
     const cells = document.getElementsByClassName("cell");
@@ -35,11 +37,13 @@ const getPlayerNames = () => {
     const player_2_input = document.getElementsByClassName("player-2-class")[0];
     const accept_button = document.getElementsByClassName("save-form")[0];
     const dialog = document.getElementsByClassName("settings_dialog")[0];
-
+    
     accept_button.addEventListener("click", (e) => {
          player_1 = newPlayer(player_1_input.value, "X");
          player_2 = newPlayer(player_2_input.value, "O");
+         console.log(player_1)
     })
+    
     return({player_1: player_1, player_2: player_2} )
 }
 
@@ -61,7 +65,7 @@ const addCellEventListener = () => {
                         setWinScreen(domElements.win_screen[0], domElements.currPlayer)
                        
                     }
-                    domElements.currPlayer = domElements.currPlayer == domElements.player_1 ? domElements.player_2 : domElements.player_1;
+                    domElements.currPlayer = domElements.currPlayer == player_1 ? player_2 : player_1;
 
                 }
             })
@@ -74,13 +78,14 @@ const settingsDialog = () => {
     domElements.settings_button.addEventListener("click", () => {
         domElements.dialog[0].showModal()
     })
+    getPlayerNames();
 }
 
 
 const init_game = () => {
     settingsDialog();
     addCellEventListener();
-    getPlayerNames();
+  
     
 }
 
